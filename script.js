@@ -37,9 +37,9 @@ function startGame() {
   timeLeft = 30;
   scoreEl.textContent = score;
   timeEl.textContent = timeLeft;
-  startBtn.textContent = "Playing.";
+  startBtn.textContent = "Playing";
   startBtn.disabled = true;
-
+ˇ
 
   const existingDrops = document.querySelectorAll(".water-drop");
   existingDrops.forEach(drop => drop.remove());
