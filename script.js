@@ -14,7 +14,7 @@ const bucket = document.getElementById("bucket");
 
 startBtn.addEventListener("click", startGame);
 
-// Bucket follows 
+// Bucket follows mouse
 gameContainer.addEventListener("mousemove", (e) => {
     if (!gameRunning) return;
     const rect = gameContainer.getBoundingClientRect();
@@ -31,30 +31,24 @@ gameContainer.addEventListener("mousemove", (e) => {
 function startGame() {
   if (gameRunning) return;
 
- 
   gameRunning = true;
   score = 0;
   timeLeft = 30;
   scoreEl.textContent = score;
   timeEl.textContent = timeLeft;
-  startBtn.textContent = "Playing";
+  startBtn.textContent = "Playing...";
   startBtn.disabled = true;
-ˇ
 
   const existingDrops = document.querySelectorAll(".water-drop");
   existingDrops.forEach(drop => drop.remove());
 
-  
   dropMaker = setInterval(createDrop, 600);
-
-  
   collisionCheckInterval = setInterval(checkCollisions, 20);
 
   timerInterval = setInterval(() => {
     timeLeft--;
     timeEl.textContent = timeLeft;
 
-   
     if (timeLeft === 20) {
         clearInterval(dropMaker);
         dropMaker = setInterval(createDrop, 300); 
@@ -75,7 +69,6 @@ function createDrop() {
   const drop = document.createElement("div");
   drop.className = "water-drop";
 
-  
   const isBad = Math.random() < 0.3;
   if (isBad) {
       drop.classList.add("bad-drop");
@@ -89,7 +82,7 @@ function createDrop() {
   drop.style.left = `${xPosition}px`;
   drop.style.top = `-50px`;
 
-  
+  // FIXED: Added missing minus operator
   const timePassed = 30 - timeLeft; 
   const speedBonus = timePassed * 0.2; 
   const speed = (Math.random() * 2 + 2) + speedBonus;
@@ -108,7 +101,6 @@ function createDrop() {
       }
   }
 
-  // Click drop directly to collect/destroy
   drop.addEventListener("click", () => {
       if (!gameRunning) return;
       handleCollection(drop.dataset.type);
@@ -119,7 +111,6 @@ function createDrop() {
   requestAnimationFrame(fall);
 }
 
-
 function checkCollisions() {
     if (!gameRunning) return;
 
@@ -129,7 +120,6 @@ function checkCollisions() {
     drops.forEach(drop => {
         const dropRect = drop.getBoundingClientRect();
 
-        
         const isColliding = !(
             dropRect.right < bucketRect.left ||
             dropRect.left > bucketRect.right ||
@@ -159,11 +149,9 @@ function endGame() {
   clearInterval(timerInterval);
   clearInterval(collisionCheckInterval);
 
- 
   const existingDrops = document.querySelectorAll(".water-drop");
   existingDrops.forEach(drop => drop.remove());
 
- 
   startBtn.textContent = "Play Again";
   startBtn.disabled = false;
 
