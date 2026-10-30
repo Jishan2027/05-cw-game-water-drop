@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Drop Game</title>
+    <title>Water Drop Game | charity: water</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="game-wrapper">
         <h1 class="game-title">Water Drop</h1>
         <p class="game-tagline">Catch clean water in the jerry can, avoid contaminants!</p>
+        
+        <div class="difficulty-panel">
+            <span>Difficulty:</span>
+            <button class="diff-btn active" data-diff="easy">Easy</button>
+            <button class="diff-btn" data-diff="normal">Normal</button>
+            <button class="diff-btn" data-diff="hard">Hard</button>
+        </div>
+
         <div class="score-panel">
             <div class="score">Score: <span id="score">0</span></div>
             <div class="timer">Time: <span id="time">30</span>s</div>
@@ -21,6 +29,14 @@
                 <span class="bucket-label">🪣</span>
             </div>
         </div>
+
+        <footer class="charity-footer">
+            <p>Inspired by <a href="https://www.charitywater.org" target="_blank" rel="noopener">charity: water</a> — bringing clean and safe drinking water to people in developing nations.</p>
+            <div class="footer-links">
+                <a href="https://www.charitywater.org/about" target="_blank" rel="noopener">Our Mission</a>
+                <a href="https://www.charitywater.org/donate" target="_blank" rel="noopener" class="donate-btn">Donate Now</a>
+            </div>
+        </footer>
     </div>
     
     <script src="script.js"></script>

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
 
 * {
     margin: 0;
@@ -11,29 +12,56 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: #f4f7f6;
-    font-family: 'Proxima Nova', 'Avenir', Arial, sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
+    padding: 20px 0;
 }
 
 .game-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .game-title {
     color: #131313;
-    font-size: 48px;
+    font-size: 44px;
+    font-weight: 800;
     margin-top: 0;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     text-align: center;
 }
 
 .game-tagline {
     color: #666;
-    font-size: 18px;
-    margin-bottom: 20px;
+    font-size: 16px;
+    margin-bottom: 5px;
     text-align: center;
+}
+
+/* Difficulty Panel */
+.difficulty-panel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: #333;
+}
+
+.diff-btn {
+    padding: 6px 14px;
+    border: 2px solid #2E9DF7;
+    background-color: white;
+    color: #2E9DF7;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.diff-btn.active, .diff-btn:hover {
+    background-color: #2E9DF7;
+    color: white;
 }
 
 .score-panel {
@@ -42,21 +70,21 @@ body {
     align-items: center;
     width: 800px;
     padding: 12px 24px;
-    background-color: #FFC907; /* charity: water yellow */
+    background-color: #FFC907; 
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .score, .timer {
     flex: 0 1 auto;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
     color: #131313;
 }
 
 #start-btn {
     padding: 10px 20px;
-    background-color: #2E9DF7; /* charity: water blue */
+    background-color: #2E9DF7; 
     color: white;
     border: none;
     border-radius: 6px;
@@ -70,22 +98,27 @@ body {
     background-color: #1b85df;
 }
 
+#start-btn:disabled {
+    background-color: #a0c4e2;
+    cursor: not-allowed;
+}
+
 #game-container {
     width: 800px;
-    height: 600px;
+    height: 500px;
     background-color: #e6f7ff;
     border: 2px solid #2E9DF7;
     border-radius: 8px;
     position: relative;
     overflow: hidden;
-    cursor: none; /* Hide default cursor so bucket acts as mouse */
+    cursor: none;
 }
 
 /* Water Drops */
 .water-drop {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     background-color: #2E9DF7;
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     transform-origin: center;
@@ -94,13 +127,13 @@ body {
 
 /* Contaminant Drops */
 .bad-drop {
-    background-color: #7A5230 !important; /* Dirty brown color */
+    background-color: #7A5230 !important;
     border: 2px solid #4A3018;
 }
 
 .bad-drop::after {
     content: "☣️";
-    font-size: 18px;
+    font-size: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -125,12 +158,44 @@ body {
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
+/* Footer Styling */
+.charity-footer {
+    margin-top: 15px;
+    text-align: center;
+    color: #555;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+.charity-footer a {
+    color: #2E9DF7;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.donate-btn {
+    background-color: #FFC907;
+    color: #131313 !important;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
 @media (max-width: 850px) {
     .game-wrapper, .score-panel, #game-container {
         width: 95vw;
     }
     
     #game-container {
-        height: 70vh;
+        height: 60vh;
     }
 }
